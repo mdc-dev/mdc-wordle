@@ -47,6 +47,10 @@ const Keyboard = (word) => {
             rowIterator ++;
             letterIterator = 0;
 
+            if (answer.join('') === wordArr.join('')) {
+                console.log("Game Over. Score is " + (rowIterator - 1))
+            }
+
         } else {
             console.log('not at full length')
         }
