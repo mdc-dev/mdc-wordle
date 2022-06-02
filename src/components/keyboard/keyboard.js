@@ -1,7 +1,8 @@
 import React from 'react'
 import './keyboard.scss'
 
-const Keyboard = () => {
+const Keyboard = (word) => {
+    const userAnswer = word;
     let rowIterator = 1;
     let letterIterator = 0;
 
@@ -12,6 +13,32 @@ const Keyboard = () => {
                 letterArr[letterIterator].innerHTML = e.target.innerHTML;
                 letterIterator ++;
             }
+    }
+
+    const enterClick = () => {
+        if(letterIterator === 5) {
+            let answerLetters = [...document.getElementById(rowIterator).children];
+            let answer = [];
+            answerLetters.forEach(letter => {
+                answer.push(letter.innerHTML)
+            })
+
+            const wordArr = userAnswer.word.split('');
+
+            answer.forEach((letter, i) => {
+                if (letter === wordArr[i]) {
+                    answerLetters[i].classList.add('green')
+                } else if (letter !== wordArr[i] && wordArr.includes(letter)) {
+                    answerLetters[i].classList.add('yellow')
+                }
+            })
+            
+            rowIterator ++;
+            letterIterator = 0;
+
+        } else {
+            console.log('not at full length')
+        }
     }
 
   return (
@@ -41,7 +68,7 @@ const Keyboard = () => {
                 <button type='button' className="key" onClick={(e) => keyClick(e)}>L</button>
             </div>
             <div className="key-row">
-                <button type='button' className="key button-large">Enter</button>
+                <button type='button' className="key button-large" onClick={enterClick}>Enter</button>
                 <button type='button' className="key" onClick={(e) => keyClick(e)}>Z</button>
                 <button type='button' className="key" onClick={(e) => keyClick(e)}>X</button>
                 <button type='button' className="key" onClick={(e) => keyClick(e)}>C</button>

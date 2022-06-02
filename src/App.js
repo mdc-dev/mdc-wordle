@@ -5,11 +5,13 @@ import Keyboard from './components/keyboard/keyboard';
 
 function App() {
 
+  const word = 'HELLO';
+
   return (
     <div className="App">
       <Nav />
       <WordleContainer />
-      <Keyboard />
+      <Keyboard word={word}/>
     </div>
   );
 }
