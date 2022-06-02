@@ -2,7 +2,7 @@
   min-height: 100vh;
   min-width: 100vw;
   box-sizing: border-box;
-  background-color: gray;
+  background-color: rgb(65, 65, 65);
 }
 
 .App-logo {

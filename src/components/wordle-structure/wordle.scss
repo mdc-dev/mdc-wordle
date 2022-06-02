@@ -1,13 +1,11 @@
 .wordle-container {
     width: 90vw;
     height: 58vh;
-    background-color: yellow;
+    max-width: 400px;
     margin: 0 auto;
 
     .six-stack {
         height: 100%;
         width: 100%;
-    }
-
-    
+    }   
 }
