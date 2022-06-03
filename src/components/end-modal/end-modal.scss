@@ -11,13 +11,14 @@
     .modal {
         height: 60vh;
         width: 90vw;
-        background-color: white;
+        background-color: rgb(17, 17, 17);
         position: fixed;
         top: 15vh;
         left: 5vw;
 
         .content {
             position: relative;
+            padding-right: 10px;
 
             .exit-modal {
                 position: absolute;
@@ -26,11 +27,62 @@
             }
 
             .modal-inner {
+                color: white;
                 display: inline-block;
                 position: relative;
                 min-height: 60vh;
                 width: 100%;
                 text-align: center;
+
+                .numbers {
+                    min-width: 100%;
+                    height: fit-content;
+                    display: flex;
+
+                    .state-num {
+                        height: 40%;
+                        font-size: 3em;
+                        font-weight: normal;
+                        margin-bottom: 10px;
+                    }
+
+                    .num-item {
+                        width: 25%;
+                        font-size: 1em;
+
+                    }
+                }
+
+                .scores {
+                    min-width: 100%;
+                    min-height: 200px;
+
+                    h2 { 
+                        margin-top: 0;
+                    }
+
+                    ol {
+                        position: relative;
+                        padding-bottom: 20px;
+
+                        .score {
+                            width: 85%;
+                            min-height: 100%; 
+                            background-color: green;
+                            position: relative;
+                            margin: 5px 0;
+
+                            .overall-score {
+                                position: absolute;
+                                top: 0;
+                                right: 10px;
+                                font-weight: 500;
+
+                            }
+                        }
+                        
+                    }
+                }
 
                 .play-next { 
                     background-color: green;
