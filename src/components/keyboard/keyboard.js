@@ -48,7 +48,7 @@ const Keyboard = (word) => {
             letterIterator = 0;
 
             if (answer.join('') === wordArr.join('')) {
-                console.log("Game Over. Score is " + (rowIterator - 1))
+                document.getElementById('modal-layer').classList.remove('hide')
             }
 
         } else {
