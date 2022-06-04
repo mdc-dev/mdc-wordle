@@ -1,30 +1,40 @@
-import React from 'react'
+import Modal from '../end-modal/end-modal'
+import React, { useState } from 'react'
 import './keyboard.scss'
 
-const Keyboard = (word) => {
-    const userAnswer = word;
-    let rowIterator = 1;
-    let letterIterator = 0;
+const Keyboard = () => {
 
+    const words = ['HELLO', 'FOCUS', 'SMART'];
+
+    const [gameScore, setGameScore] = useState(0);
+    const [currentWinStreak, setCurrentWinStreak] = useState(0);
+    const [maxWinStreak, setMaxWinStreak] = useState(0);
+    const [gamesWon, setGamesWon] = useState(0)
+    const [gameCount, setGameCount] = useState(0);
+    const [rowIterator, setRowIterator] = useState(1);
+    const [letterIterator, setLetterIterator] = useState(0);
+
+    let word = words[gameCount];
+  
+  
     const keyClick = (e) => {
-            let currentRow = document.getElementById(rowIterator);
-            let letterArr = currentRow.children;
-            if(letterIterator < 6) {
-                letterArr[letterIterator].innerHTML = e.target.innerHTML;
-                letterIterator ++;
-            }
+        let currentRow = document.getElementById(rowIterator);
+        let letterArr = currentRow.children;
+        if(letterIterator < 6) {
+            letterArr[letterIterator].innerHTML = e.target.innerHTML;
+            setLetterIterator((prev) => prev + + 1);
+        }
     }
 
     const enterClick = () => {
-        if(letterIterator === 5) {
-            let answerLetters = [...document.getElementById(rowIterator).children];
-            let answer = [];
-            answerLetters.forEach(letter => {
-                answer.push(letter.innerHTML)
-            })
+        let answerLetters = [...document.getElementById(rowIterator).children];
+        let answer = [];
+        answerLetters.forEach(letter => {
+            answer.push(letter.innerHTML);
+        })
+        const wordArr = word.split('');
 
-            const wordArr = userAnswer.word.split('');
-
+        if (letterIterator === 5 && answer.join('') === wordArr.join('')) {
             answer.forEach((letter, i) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
@@ -43,19 +53,46 @@ const Keyboard = (word) => {
                     }
                 }
             })
-            
-            rowIterator ++;
-            letterIterator = 0;
 
-            if (answer.join('') === wordArr.join('')) {
-                document.getElementById('modal-layer').classList.remove('hide')
+            setRowIterator((prev) => prev + 1);
+            setLetterIterator(0);
+
+            setGameScore(rowIterator - 1)
+            setGameCount((prev) => prev + 1);
+            setGamesWon((prev) => prev + 1);
+            setCurrentWinStreak((prev) => prev + 1)
+            document.getElementById('modal-layer').classList.remove('hide');
+
+            if (currentWinStreak + 1 >= maxWinStreak) {
+                setMaxWinStreak(currentWinStreak + 1)
             }
 
         } else {
-            console.log('not at full length')
+            answer.forEach((letter, i) => {
+                let key = document.getElementById(letter);
+                if (letter === wordArr[i]) {
+                    answerLetters[i].classList.add('green');
+                    if(!key.classList.contains('green')) {
+                        key.classList.add('green')
+                    }
+                } else if (letter !== wordArr[i] && wordArr.includes(letter)) {
+                    answerLetters[i].classList.add('yellow');
+                    if (!key.classList.contains('yellow')) {
+                        key.classList.add('yellow')
+                    }
+                } else {
+                    if (!key.classList.contains('grey')) {
+                        key.classList.add('grey')
+                    }
+                }
+            })
+
+            setRowIterator((prev) => prev + 1);
+            setLetterIterator(0);
+            setGameCount((prev) => prev + 1)
         }
     }
-
+  
   return (
     <div className="keyboard-container">
         <div className="keyboard-keys">
@@ -83,7 +120,7 @@ const Keyboard = (word) => {
                 <button type='button' className="key" id="L" onClick={(e) => keyClick(e)}>L</button>
             </div>
             <div className="key-row">
-                <button type='button' className="key button-large" onClick={enterClick}>Enter</button>
+                <button type='button' className="key button-large" onClick={(e) => enterClick(e)}>Enter</button>
                 <button type='button' className="key" id="Z" onClick={(e) => keyClick(e)}>Z</button>
                 <button type='button' className="key" id="X" onClick={(e) => keyClick(e)}>X</button>
                 <button type='button' className="key" id="C" onClick={(e) => keyClick(e)}>C</button>
@@ -94,6 +131,8 @@ const Keyboard = (word) => {
                 <button type='button' className="key button-large"><i className="fa-solid fa-delete-left"></i></button>
             </div>
         </div>
+
+        <Modal gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} />
     </div>
   )
 }
