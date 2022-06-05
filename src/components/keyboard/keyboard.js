@@ -9,7 +9,14 @@ const Keyboard = () => {
     let gc = window.localStorage.getItem('GAME_COUNT') || 0;
     let gw = window.localStorage.getItem('GAMES_WON') || 0;
     let cws = window.localStorage.getItem('CURRENT_WIN_STREAK') || 0;
-    let mws = window.localStorage.getItem('MAX_WIN_STREAK') || 0
+    let mws = window.localStorage.getItem('MAX_WIN_STREAK') || 0;
+
+    let aScore = window.localStorage.getItem('A_SCORE') || 0;
+    let bScore = window.localStorage.getItem('B_SCORE') || 0;
+    let cScore = window.localStorage.getItem('C_SCORE') || 0;
+    let dScore = window.localStorage.getItem('D_SCORE') || 0;
+    let eScore = window.localStorage.getItem('E_SCORE') || 0;
+    let fScore = window.localStorage.getItem('F_SCORE') || 0;
 
     const [gameScore, setGameScore] = useState(0);
     const [currentWinStreak, setCurrentWinStreak] = useState(parseInt(cws));
@@ -18,7 +25,9 @@ const Keyboard = () => {
     const [gameCount, setGameCount] = useState(parseInt(gc));
     const [rowIterator, setRowIterator] = useState(1);
     const [letterIterator, setLetterIterator] = useState(0);
-    const [scores, setScores] = useState({a: 3, b: 1, c: 1, d: 3, e: 0, f: 0})
+    const [scores, setScores] = useState({a: aScore, b: bScore, c: cScore, d: dScore, e: eScore, f: fScore})
+
+
 
     let word = words[gameCount];
 
@@ -74,7 +83,8 @@ const Keyboard = () => {
             const key = Object.keys(scores)[rowIterator - 1]
             const value = scores[key];
 
-            setScores({...scores, [key]: value + 1})
+            setScores({...scores, [key]: value + 1});
+            console.log(scores)
 
             
 
@@ -84,7 +94,11 @@ const Keyboard = () => {
 
             window.localStorage.setItem('MAX_WIN_STREAK', JSON.stringify(maxWinStreak + 1));
 
-        } else {
+        } else if (letterIterator === 5 && answer.join('') !== wordArr.join('')) {
+            setGameCount((prev) => prev + 1);
+            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
+            window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0))
+        }else {
             answer.forEach((letter, i) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
@@ -106,9 +120,9 @@ const Keyboard = () => {
 
             setRowIterator((prev) => prev + 1);
             setLetterIterator(0);
-            setGameCount((prev) => prev + 1);
-            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
-            window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0))
+            // setGameCount((prev) => prev + 1);
+            // window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
+            // window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0))
         }
     }
   
