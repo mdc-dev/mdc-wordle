@@ -13,10 +13,10 @@ const Keyboard = () => {
     const [gameCount, setGameCount] = useState(0);
     const [rowIterator, setRowIterator] = useState(1);
     const [letterIterator, setLetterIterator] = useState(0);
+    const [scores, setScores] = useState({a: 3, b: 0, c: 0, d: 0, e: 0, f: 0})
 
     let word = words[gameCount];
-  
-  
+
     const keyClick = (e) => {
         let currentRow = document.getElementById(rowIterator);
         let letterArr = currentRow.children;
@@ -62,6 +62,13 @@ const Keyboard = () => {
             setGamesWon((prev) => prev + 1);
             setCurrentWinStreak((prev) => prev + 1)
             document.getElementById('modal-layer').classList.remove('hide');
+
+            const key = Object.keys(scores)[rowIterator - 1]
+            const value = scores[key];
+
+            setScores({...scores, [key]: value + 1})
+
+            
 
             if (currentWinStreak + 1 >= maxWinStreak) {
                 setMaxWinStreak(currentWinStreak + 1)
@@ -132,7 +139,7 @@ const Keyboard = () => {
             </div>
         </div>
 
-        <Modal gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} />
+        <Modal scores={scores} gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} />
     </div>
   )
 }

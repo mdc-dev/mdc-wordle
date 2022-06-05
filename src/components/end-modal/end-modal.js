@@ -30,12 +30,12 @@ const Modal = (props) => {
                 <div className="scores">
                   <h2>Score Distribution</h2>
                   <ol className="score-rows">
-                    <li className="score" id="score-item-1"><span className="overall-score"></span></li>
-                    <li className="score" id="score-item-2"><span className="overall-score"></span></li>
-                    <li className="score" id="score-item-3"><span className="overall-score"></span></li>
-                    <li className="score" id="score-item-4"><span className="overall-score"></span></li>
-                    <li className="score" id="score-item-5"><span className="overall-score"></span></li>
-                    <li className="score" id="score-item-6"><span className="overall-score"></span></li>
+                    <li style={{ width: (props.scores.a * 16) + '%' }} className="score" id="score-item-1"><span className="overall-score"></span>{props.scores.a }</li>
+                    <li style={{ width: (props.scores.b * 16) + '%' }} className="score" id="score-item-2"><span className="overall-score"></span>{props.scores.b }</li>
+                    <li style={{ width: (props.scores.c * 16) + '%' }} className="score" id="score-item-3"><span className="overall-score"></span>{props.scores.c }</li>
+                    <li style={{ width: (props.scores.d * 16) + '%' }} className="score" id="score-item-4"><span className="overall-score"></span>{props.scores.d }</li>
+                    <li style={{ width: (props.scores.e * 16) + '%' }} className="score" id="score-item-5"><span className="overall-score"></span>{props.scores.e }</li>
+                    <li style={{ width: (props.scores.f * 16) + '%' }} className="score" id="score-item-6"><span className="overall-score"></span>{props.scores.f }</li>
                   </ol>
                 </div>
                 <button className="play-next">Next</button>
