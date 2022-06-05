@@ -6,11 +6,16 @@ const Keyboard = () => {
 
     const words = ['HELLO', 'FOCUS', 'SMART'];
 
+    let gc = window.localStorage.getItem('GAME_COUNT') || 0;
+    let gw = window.localStorage.getItem('GAMES_WON') || 0;
+    let cws = window.localStorage.getItem('CURRENT_WIN_STREAK') || 0;
+    let mws = window.localStorage.getItem('MAX_WIN_STREAK') || 0
+
     const [gameScore, setGameScore] = useState(0);
-    const [currentWinStreak, setCurrentWinStreak] = useState(0);
-    const [maxWinStreak, setMaxWinStreak] = useState(0);
-    const [gamesWon, setGamesWon] = useState(0)
-    const [gameCount, setGameCount] = useState(0);
+    const [currentWinStreak, setCurrentWinStreak] = useState(parseInt(cws));
+    const [maxWinStreak, setMaxWinStreak] = useState(parseInt(mws));
+    const [gamesWon, setGamesWon] = useState(parseInt(gw))
+    const [gameCount, setGameCount] = useState(parseInt(gc));
     const [rowIterator, setRowIterator] = useState(1);
     const [letterIterator, setLetterIterator] = useState(0);
     const [scores, setScores] = useState({a: 3, b: 1, c: 1, d: 3, e: 0, f: 0})
@@ -60,7 +65,10 @@ const Keyboard = () => {
             setGameScore(rowIterator - 1)
             setGameCount((prev) => prev + 1);
             setGamesWon((prev) => prev + 1);
-            setCurrentWinStreak((prev) => prev + 1)
+            setCurrentWinStreak((prev) => prev + 1);
+            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1));
+            window.localStorage.setItem('GAMES_WON', JSON.stringify(gamesWon + 1));
+            window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(currentWinStreak + 1));
             document.getElementById('modal-layer').classList.remove('hide');
 
             const key = Object.keys(scores)[rowIterator - 1]
@@ -73,6 +81,8 @@ const Keyboard = () => {
             if (currentWinStreak + 1 >= maxWinStreak) {
                 setMaxWinStreak(currentWinStreak + 1)
             }
+
+            window.localStorage.setItem('MAX_WIN_STREAK', JSON.stringify(maxWinStreak + 1));
 
         } else {
             answer.forEach((letter, i) => {
@@ -96,7 +106,9 @@ const Keyboard = () => {
 
             setRowIterator((prev) => prev + 1);
             setLetterIterator(0);
-            setGameCount((prev) => prev + 1)
+            setGameCount((prev) => prev + 1);
+            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
+            window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0))
         }
     }
   
