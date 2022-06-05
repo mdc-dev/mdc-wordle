@@ -13,7 +13,7 @@ const Keyboard = () => {
     const [gameCount, setGameCount] = useState(0);
     const [rowIterator, setRowIterator] = useState(1);
     const [letterIterator, setLetterIterator] = useState(0);
-    const [scores, setScores] = useState({a: 3, b: 0, c: 0, d: 0, e: 0, f: 0})
+    const [scores, setScores] = useState({a: 1, b: 1, c: 3, d: 3, e: 0, f: 0})
 
     let word = words[gameCount];
 
