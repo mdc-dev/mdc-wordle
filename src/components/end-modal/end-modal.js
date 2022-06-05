@@ -2,8 +2,6 @@ import React from 'react'
 import './end-modal.scss'
 
 const Modal = (props) => {
-
-  console.log(props.scores)
   const objectArray = [];
   Object.keys(props.scores).forEach(key => {
     objectArray.push({[key]: props.scores[key], key: props.scores[key]})
@@ -11,13 +9,19 @@ const Modal = (props) => {
 
   let newArr = objectArray.sort((a,b) => a.key - b.key);
   let orderedArr =[];
-  newArr.forEach(obj => orderedArr.push(Object.keys(obj)[0]));
-  console.log(orderedArr);
+  newArr.forEach(obj => {
+    orderedArr.push(Object.keys(obj)[0]) 
+  });
+  let numberArr = [];
+  newArr.forEach(obj => {
+    if(!numberArr.includes(obj.key)) {
+      numberArr.push(obj.key)
+    }
+  })
+
   
-
-
   return (
-    <div className="modal-background-layer hide" id="modal-layer">
+    <div className="modal-background-layer" id="modal-layer">
       <div className="modal">
         <div className="content">
             <div className="exit-modal"><i className="fa-solid fa-x"></i></div>
@@ -44,12 +48,12 @@ const Modal = (props) => {
                 <div className="scores">
                   <h2>Score Distribution</h2>
                   <ol className="score-rows">
-                    <li style={{ width: (orderedArr.indexOf('a') * 16) + '%' }} className="score" id="score-item-1"><span className="overall-score"></span>{props.scores.a }</li>
-                    <li style={{ width: (orderedArr.indexOf('b') * 16) + '%' }} className="score" id="score-item-2"><span className="overall-score"></span>{props.scores.b }</li>
-                    <li style={{ width: (orderedArr.indexOf('c') * 16) + '%' }} className="score" id="score-item-3"><span className="overall-score"></span>{props.scores.c }</li>
-                    <li style={{ width: (orderedArr.indexOf('d') * 16) + '%' }} className="score" id="score-item-4"><span className="overall-score"></span>{props.scores.d }</li>
-                    <li style={{ width: (orderedArr.indexOf('e') * 16) + '%' }} className="score" id="score-item-5"><span className="overall-score"></span>{props.scores.e }</li>
-                    <li style={{ width: (orderedArr.indexOf('f') * 16) + '%' }} className="score" id="score-item-6"><span className="overall-score"></span>{props.scores.f }</li>
+                    <li style={{ width: (numberArr.indexOf(Object.values(props.scores)[0]) * (100 / numberArr.length)) + '%' }} className="score" id="score-item-1"><span className="overall-score"></span>{props.scores.a }</li>
+                    <li style={{ width: (numberArr.indexOf(Object.values(props.scores)[1]) * (100 / numberArr.length)) + '%' }} className="score" id="score-item-2"><span className="overall-score"></span>{props.scores.b }</li>
+                    <li style={{ width: (numberArr.indexOf(Object.values(props.scores)[2]) * (100 / numberArr.length)) + '%' }} className="score" id="score-item-3"><span className="overall-score"></span>{props.scores.c }</li>
+                    <li style={{ width: (numberArr.indexOf(Object.values(props.scores)[3]) * (100 / numberArr.length)) + '%' }} className="score" id="score-item-4"><span className="overall-score"></span>{props.scores.d }</li>
+                    <li style={{ width: (numberArr.indexOf(Object.values(props.scores)[4]) * (100 / numberArr.length)) + '%' }} className="score" id="score-item-5"><span className="overall-score"></span>{props.scores.e }</li>
+                    <li style={{ width: (numberArr.indexOf(Object.values(props.scores)[5]) * (100 / numberArr.length)) + '%' }} className="score" id="score-item-6"><span className="overall-score"></span>{props.scores.f }</li>
                   </ol>
                 </div>
                 <button className="play-next">Next</button>
