@@ -31,6 +31,9 @@ const Modal = (props) => {
     keys.forEach(key => {
       key.classList = 'key'
     })
+
+    document.getElementById('enter').classList.add('button-large');
+    document.getElementById('delete').classList.add('button-large');
     document.querySelector('.modal-background-layer').classList.add('hide');
   }
   
@@ -47,7 +50,7 @@ const Modal = (props) => {
                     <div className="sub">Played</div>
                   </div>
                   <div className="num-item win-per">
-                    <div className="state-num win-per-count">{ (props.gamesWon / props.gameCount) === 1 ? 100 : props.gamesWon / props.gameCount * 10 || 0 } </div>
+                    <div className="state-num win-per-count">{ Math.trunc((props.gamesWon / props.gameCount) * 100) || 0 } </div>
                     <div className="sub">Win %</div>
                   </div>
                   <div className="num-item cur-streak">

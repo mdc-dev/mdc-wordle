@@ -67,17 +67,17 @@ const Keyboard = () => {
                     }
                 }
             })
-
-            setRowIterator((prev) => prev + 1);
             setLetterIterator(0);
 
             setGameScore(rowIterator - 1)
             setGameCount((prev) => prev + 1);
             setGamesWon((prev) => prev + 1);
             setCurrentWinStreak((prev) => prev + 1);
+            setRowIterator(1);
             window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1));
             window.localStorage.setItem('GAMES_WON', JSON.stringify(gamesWon + 1));
             window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(currentWinStreak + 1));
+
             document.getElementById('modal-layer').classList.remove('hide');
 
             const key = Object.keys(scores)[rowIterator - 1]
@@ -94,11 +94,7 @@ const Keyboard = () => {
 
             window.localStorage.setItem('MAX_WIN_STREAK', JSON.stringify(maxWinStreak + 1));
 
-        } else if (letterIterator === 5 && answer.join('') !== wordArr.join('')) {
-            setGameCount((prev) => prev + 1);
-            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
-            window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0))
-        }else {
+        } else if (letterIterator === 5 && answer.join('') !== wordArr.join('') && rowIterator < 6) {
             answer.forEach((letter, i) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
@@ -123,6 +119,14 @@ const Keyboard = () => {
             // setGameCount((prev) => prev + 1);
             // window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
             // window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0))
+        }else {
+            console.log("WRONG")
+            console.log(letterIterator, rowIterator)
+            setGameCount((prev) => prev + 1);
+            setCurrentWinStreak(0)
+            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
+            window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0));
+            document.getElementById('modal-layer').classList.remove('hide');
         }
     }
   
@@ -153,7 +157,7 @@ const Keyboard = () => {
                 <button type='button' className="key" id="L" onClick={(e) => keyClick(e)}>L</button>
             </div>
             <div className="key-row">
-                <button type='button' className="key button-large" onClick={(e) => enterClick(e)}>Enter</button>
+                <button type='button' className="key button-large" onClick={(e) => enterClick(e)} id='enter'>Enter</button>
                 <button type='button' className="key" id="Z" onClick={(e) => keyClick(e)}>Z</button>
                 <button type='button' className="key" id="X" onClick={(e) => keyClick(e)}>X</button>
                 <button type='button' className="key" id="C" onClick={(e) => keyClick(e)}>C</button>
@@ -161,7 +165,7 @@ const Keyboard = () => {
                 <button type='button' className="key" id="B" onClick={(e) => keyClick(e)}>B</button>
                 <button type='button' className="key" id="N" onClick={(e) => keyClick(e)}>N</button>
                 <button type='button' className="key" id="M" onClick={(e) => keyClick(e)}>M</button>
-                <button type='button' className="key button-large"><i className="fa-solid fa-delete-left"></i></button>
+                <button type='button' className="key button-large" id='delete'><i className="fa-solid fa-delete-left"></i></button>
             </div>
         </div>
 
