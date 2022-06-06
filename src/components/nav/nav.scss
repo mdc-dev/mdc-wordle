@@ -2,4 +2,53 @@
     height: 50px;
     text-align: center;
     font-weight: bold;
+    display: inline-block;
+    width: 100vw;
+    flex-direction: row;
+    background-color: aqua;
+    position: relative;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+
+    .wordle-title-nav {
+        display: inline-flex;
+        margin: 0;
+        font-size: 1.5em;
+    }
+    
+    .left-side-navs {
+        position: absolute;
+        left: 20px;
+        top: 10px;
+
+        ul {
+            display: flex;
+            align-content: space-between;
+            margin: 0;
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin: 0 20px 0 0
+            }
+        }
+    }
+
+    .right-side-navs {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+
+        ul {
+            display: flex;
+            align-content: space-between;
+            margin: 0;
+            list-style: none;
+
+            li {
+                margin: 0  0 0 20px;
+
+            }
+        }
+    }
 }
