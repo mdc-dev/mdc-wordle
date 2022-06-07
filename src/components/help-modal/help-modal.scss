@@ -1,0 +1,75 @@
+
+    .help-modal {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgb(17, 17, 17);
+        overflow: hidden;
+        color: white;
+        z-index: 1001;
+
+        .closeModal {
+            position: fixed;
+            right: 25px;
+            top: 20px;
+        }
+
+        h1 {
+            padding-top: 40px;
+            padding-bottom: 20px;
+            margin: 10px auto;
+            text-align: center;
+            width: fit-content;
+            font-size: 1.5em;
+            
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .instructions, .examples, .message {
+            padding: 0 20px 20px 20px;
+
+        }
+
+        .split {
+            content: '';
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+            height: 1px;
+            background-color: white;
+            
+        }
+
+        .examples .example {
+            display: flex;
+            align-content: space-between;
+            list-style: none;
+            padding-left: 0;
+
+            .ex-letter-green {
+                background-color: rgb(35, 161, 35);
+            }
+
+            .ex-letter-yellow {
+                background-color: rgb(236, 204, 17);;
+            }
+
+            .ex-letter-gray {
+                background-color: rgb(53, 53, 53);
+            }
+            
+            li {
+                border: solid 1px gray;
+                padding: 2px;
+                min-width: 35px;
+                min-height: 35px;
+                text-align: center;
+                font-size: 1.4em;
+                margin-left: 5px;
+            }
+        }
+    }

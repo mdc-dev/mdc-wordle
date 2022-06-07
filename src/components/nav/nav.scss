@@ -5,10 +5,12 @@
     display: inline-block;
     width: 100vw;
     flex-direction: row;
-    background-color: aqua;
+    border-bottom: 1px solid gray;
     position: relative;
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: white;
+    z-index: 1000;
 
     .wordle-title-nav {
         display: inline-flex;
@@ -20,6 +22,7 @@
         position: absolute;
         left: 20px;
         top: 10px;
+        color: gray;
 
         ul {
             display: flex;
@@ -38,6 +41,7 @@
         position: absolute;
         right: 20px;
         top: 10px;
+        color: gray;
 
         ul {
             display: flex;
@@ -46,8 +50,7 @@
             list-style: none;
 
             li {
-                margin: 0  0 0 20px;
-
+                margin: 0 0 0 20px;
             }
         }
     }

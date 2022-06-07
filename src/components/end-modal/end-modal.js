@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './end-modal.scss'
 
 const Modal = (props) => {
@@ -32,16 +32,18 @@ const Modal = (props) => {
       key.classList = 'key'
     })
 
-    document.getElementById('enter').classList.add('button-large');
-    document.getElementById('delete').classList.add('button-large');
-    document.querySelector('.modal-background-layer').classList.add('hide');
+    props.setBtnDisabled(true)
+    props.functionToggle()
+    
   }
+
+  console.log(props)
   
   return (
-    <div className="modal-background-layer hide" id="modal-layer">
+    <div className="modal-background-layer" id="modal-layer">
       <div className="modal">
         <div className="content">
-            <div className="exit-modal"><i className="fa-solid fa-x"></i></div>
+            <div className="exit-modal"><i className="fa-solid fa-x" onClick={() => props.functionToggle()}></i></div>
               <div className="modal-inner">
                 <h2>Statistics</h2>
                 <div className="numbers">
@@ -73,7 +75,7 @@ const Modal = (props) => {
                     <li style={{ width: (0 + numberArr.indexOf(Object.values(props.scores)[5])) / 10 * 100 + '%' }} className="score" id="score-item-6"><span className="overall-score"></span>{props.scores.f }</li>
                   </ol>
                 </div>
-                <button className="play-next" onClick={() => exitModal()}>Next</button>
+                <button className="play-next" disabled={props.btnDisabled} onClick={() => exitModal()}>Next</button>
               </div>
         </div>
       </div>
