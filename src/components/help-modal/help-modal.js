@@ -2,6 +2,7 @@ import React from 'react'
 import './help-modal.scss'
 
 const HelpModal = (props) => {
+    console.log(props)
   return (
     <div className="help-modal-layer">
         <div className="help-modal">

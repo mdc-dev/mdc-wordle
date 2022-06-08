@@ -3,6 +3,7 @@ import './nav.scss'
 
 const Nav = (props) => {
 
+  console.log(props.darkMode)
   return (
     <div className="nav">
       <div className="n">
@@ -17,7 +18,7 @@ const Nav = (props) => {
         <div className="right-side-navs">
           <ul className="nav-items">
             <li className="item"><i class="fa-solid fa-chart-simple" onClick={() => props.functionToggle()}></i></li>
-            <li className="item"><i class="fa-solid fa-gear"></i></li>
+            <li className="item"><i class="fa-solid fa-gear" onClick={() => props.settingsModalFunction()}></i></li>
           </ul>
         </div>
       </div>
