@@ -2,8 +2,6 @@ import React from 'react'
 import './nav.scss'
 
 const Nav = (props) => {
-
-  console.log(props.darkMode)
   return (
     <div className="nav">
       <div className="n">

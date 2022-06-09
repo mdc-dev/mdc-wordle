@@ -37,7 +37,6 @@ const Modal = (props) => {
     
   }
 
-  console.log(props)
   
   return (
     <div className="modal-background-layer" id="modal-layer">

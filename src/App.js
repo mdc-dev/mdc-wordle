@@ -11,6 +11,7 @@ const App = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const [helpModal, setHelpModal] = useState(false);
   const [settingsModal, setSettingsModal] = useState(true);
+  const [isDark, setIsDark] = useState(true)
 
   const settingModalFunction = () => {
     setSettingsModal(!settingsModal)
@@ -24,13 +25,18 @@ const App = () => {
     setHelpModal(!helpModal)
   }
 
+  const toggleLightDark = (e) => {
+    e.target.checked = !e.target.checked;
+    setIsDark(!isDark);
+  }
 
-  console.log(toggleModal)
+   console.log(isDark)
+
     return (
-      <div className="App">
+      <div className={isDark ? "App" : "App light"}>
         <Nav functionToggle={modalFunction} functionHelpToggle={helpModalFunction} settingsModalFunction={settingModalFunction} />
         { helpModal ? <HelpModal helpModalFunction={helpModalFunction} /> : null }
-        { settingsModal ? <SettingsModal settingsModalFunction={settingModalFunction} /> : null}
+        { settingsModal ? <SettingsModal toggleLightDark={toggleLightDark} isDark={isDark} settingsModalFunction={settingModalFunction} /> : null}
         <WordleContainer />
         <Keyboard functionToggle={modalFunction} toggleModal={toggleModal} />
       </div>
