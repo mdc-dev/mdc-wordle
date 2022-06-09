@@ -190,7 +190,7 @@ const Keyboard = (props) => {
             </div>
         </div>
 
-        { props.toggleModal ? <Modal setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} functionToggle ={props.functionToggle} scores={scores} gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} /> : null }
+        { props.toggleModal ? <Modal setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} functionToggle ={props.functionToggle} scores={scores} gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} isDark={props.isDark} /> : null }
     </div>
   )
 }

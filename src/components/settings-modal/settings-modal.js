@@ -17,8 +17,18 @@ const HelpModal = (props) => {
                         <span class="slider round"></span>
                     </label>
                 </div>
-
             </div>
+            <span className="split"></span>
+            <div className="contrast-theme-cont">
+                <h2 className="contrast">High Contrast Mode</h2>
+                <div className="switch-container">
+                    <label class="switch">
+                    <input id="contrast" type="checkbox"/>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
         </div>
     </div>
   )

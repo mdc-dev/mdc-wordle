@@ -105,6 +105,20 @@
     }
 }
 
+.light-modal {
+    background-color: rgba(221, 221, 221, 0.247) !important; 
+
+    .modal {
+       background-color: white;
+        color: black !important; 
+
+        .modal-inner {
+            color: black !important;
+        }
+    }
+    
+}
+
 .hide {
     display: none;
 }

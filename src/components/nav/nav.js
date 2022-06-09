@@ -12,7 +12,7 @@ const Nav = (props) => {
           </ul>
           
         </div>
-        <h3 className="wordle-title-nav">Wordle</h3>
+        <h3 className={props.isDark ? "wordle-title-nav" : "wordle-title-nav light"}>Wordle</h3>
         <div className="right-side-navs">
           <ul className="nav-items">
             <li className="item"><i class="fa-solid fa-chart-simple" onClick={() => props.functionToggle()}></i></li>

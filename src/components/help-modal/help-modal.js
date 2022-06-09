@@ -4,7 +4,7 @@ import './help-modal.scss'
 const HelpModal = (props) => {
   return (
     <div className="help-modal-layer">
-        <div className="help-modal">
+        <div className={props.isDark ? "help-modal" : "help-modal light"}>
             <span className="closeModal"><i class="fa-solid fa-x" onClick={() => props.helpModalFunction()}></i></span>
             <h1>How To Play</h1>
             <div className="instructions">

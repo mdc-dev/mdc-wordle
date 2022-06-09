@@ -34,11 +34,11 @@ const App = () => {
 
     return (
       <div className={isDark ? "App" : "App light"}>
-        <Nav functionToggle={modalFunction} functionHelpToggle={helpModalFunction} settingsModalFunction={settingModalFunction} />
-        { helpModal ? <HelpModal helpModalFunction={helpModalFunction} /> : null }
+        <Nav functionToggle={modalFunction} isDark={isDark} functionHelpToggle={helpModalFunction} settingsModalFunction={settingModalFunction} />
+        { helpModal ? <HelpModal helpModalFunction={helpModalFunction} isDark={isDark}/> : null }
         { settingsModal ? <SettingsModal toggleLightDark={toggleLightDark} isDark={isDark} settingsModalFunction={settingModalFunction} /> : null}
         <WordleContainer />
-        <Keyboard functionToggle={modalFunction} toggleModal={toggleModal} />
+        <Keyboard functionToggle={modalFunction} toggleModal={toggleModal} isDark={isDark} />
       </div>
     )
   }
