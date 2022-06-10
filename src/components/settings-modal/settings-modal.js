@@ -23,7 +23,7 @@ const HelpModal = (props) => {
                 <h2 className="contrast">High Contrast Mode</h2>
                 <div className="switch-container">
                     <label class="switch">
-                    <input id="contrast" type="checkbox"/>
+                    <input id="contrast" type="checkbox" checked={props.hiContrast} onChange={(e) => props.toggleHiContrast(e)}/>
                         <span class="slider round"></span>
                     </label>
                 </div>
