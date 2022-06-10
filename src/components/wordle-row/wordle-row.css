@@ -22,6 +22,13 @@
     animation-fill-mode: forwards;
 }
 
+.letter-entry.gray {
+    /* animation-delay: calc(attr(data-count) * 150ms); */
+    animation: flip-with-scale 1s, grayAnimation 2s ease-in;
+    animation-fill-mode: forwards;
+}
+
+
 .letter-entry.orange {
     /* animation-delay: calc(attr(data-count) * 150ms); */
     animation: flip-with-scale 1s, orangeAnimation 2s ease-in;
@@ -52,12 +59,6 @@
 .letter-entry.orange:nth-child(5), .letter-entry.blue:nth-child(5), .letter-entry.green:nth-child(5), .letter-entry.gray:nth-child(5), .letter-entry.yellow:nth-child(5) {
     /* animation-delay: calc(attr(data-count) * 150ms); */
     animation-delay: 1500ms;
-}
-
-.letter-entry.gray {
-    /* animation-delay: calc(attr(data-count) * 150ms); */
-    animation: flip-with-scale 1s;
-    animation-fill-mode: forwards;
 }
 
 
@@ -106,6 +107,15 @@
     }
 }
 
+@keyframes grayAnimation {
+    0% {
+        background-color: none;  
+    }
+    100% {
+        background-color: rgb(145, 145, 145);
+    }
+}
+
 
 @keyframes blueAnimation {
     0% {
@@ -115,6 +125,7 @@
         background-color: rgb(70, 156, 255);
     }
 }
+
 
 .yellow-key {
     background-color: rgb(236, 204, 17) !important;
@@ -130,4 +141,8 @@
 
 .blue-key {
     background-color: rgb(70, 156, 255) !important;
+}
+
+.gray-key {
+    background-color: rgb(97, 97, 97) !important;
 }

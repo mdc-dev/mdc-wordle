@@ -11,6 +11,7 @@
     .modal {
         height: 60vh;
         width: 90vw;
+        max-width: 400px;
         background-color: rgb(17, 17, 17);
         position: fixed;
         top: 15vh;
@@ -121,4 +122,12 @@
 
 .hide {
     display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .modal {
+        position: relative !important;
+        margin: auto;
+        left: 0 !important;
+    }
 }

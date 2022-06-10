@@ -12,50 +12,55 @@
     color: white;
     z-index: 1000;
 
-    .wordle-title-nav {
-        display: inline-flex;
-        margin: 0;
-        font-size: 1.5em;
-        z-index: 1;
-    }
-
-    .light {
-        color: black
-    }
+    .n {
+        max-width: 40vw;
+        margin: 0 auto;
     
-    .left-side-navs {
-        position: absolute;
-        left: 20px;
-        top: 10px;
-        color: gray;
-
-        ul {
-            display: flex;
-            align-content: space-between;
+        .wordle-title-nav {
+            display: inline-flex;
             margin: 0;
-            list-style: none;
-            padding: 0;
+            font-size: 1.5em;
+            z-index: 1;
+        }
 
-            li {
-                margin: 0 20px 0 0
+        .light {
+            color: black
+        }
+        
+        .left-side-navs {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            color: gray;
+
+            ul {
+                display: flex;
+                align-content: space-between;
+                margin: 0;
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin: 0 20px 0 0
+                }
             }
         }
-    }
 
-    .right-side-navs {
-        position: absolute;
-        right: 20px;
-        top: 10px;
-        color: gray;
+        .right-side-navs {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: gray;
 
-        ul {
-            display: flex;
-            align-content: space-between;
-            margin: 0;
-            list-style: none;
+            ul {
+                display: flex;
+                align-content: space-between;
+                margin: 0;
+                list-style: none;
 
-            li {
-                margin: 0 0 0 20px;
+                li {
+                    margin: 0 0 0 20px;
+                }
             }
         }
     }

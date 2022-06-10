@@ -81,8 +81,8 @@ const Keyboard = (props) => {
                     }
                 } else {
                     answerLetters[i].classList.add('gray');
-                    if (!key.classList.contains('grey')) {
-                        key.classList.add('grey')
+                    if (!key.classList.contains('gray-key')) {
+                        key.classList.add('gray-key')
                     }
                 }
             })
@@ -132,8 +132,8 @@ const Keyboard = (props) => {
                     }
                 } else {
                     answerLetters[i].classList.add('gray');
-                    if (!key.classList.contains('grey')) {
-                        key.classList.add('grey')
+                    if (!key.classList.contains('gray-key')) {
+                        key.classList.add('gray-key')
                     }
                 }
             })
@@ -150,7 +150,9 @@ const Keyboard = (props) => {
             setCurrentWinStreak(0)
             window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
             window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(0));
-            document.getElementById('modal-layer').classList.remove('hide');
+            setTimeout(function () {
+                props.functionToggle()
+            }, 5000);
         }
     }
   
@@ -193,7 +195,7 @@ const Keyboard = (props) => {
             </div>
         </div>
 
-        { props.toggleModal ? <Modal setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} functionToggle ={props.functionToggle} scores={scores} gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} isDark={props.isDark} /> : null }
+        { props.toggleModal ? <Modal setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} functionToggle={props.functionToggle} scores={scores} gameCount={gameCount} gamesWon={gamesWon} currentWinStreak={currentWinStreak} maxWinStreak={maxWinStreak} isDark={props.isDark} /> : null }
     </div>
   )
 }

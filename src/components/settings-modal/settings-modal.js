@@ -4,7 +4,7 @@ import './settings-modal.scss'
 const HelpModal = (props) => {
 
   return (
-    <div className="help-modal-layer">
+    <div className={"help-modal-layer " + (props.isDark ? null : 'light')}>
         <div className={"settings-modal "  + (props.isDark ? null : 'light')}>
             <span className="closeSettingsModal"><i class="fa-solid fa-x" onClick={() => props.settingsModalFunction()}></i></span>
             <h2>Settings</h2>
@@ -28,7 +28,13 @@ const HelpModal = (props) => {
                     </label>
                 </div>
             </div>
-
+            <span className="split"></span>
+            <div className="contact-theme-cont">
+                <h2 className="feedback">
+                    Feedback
+                </h2>
+                <a href="mailto: mcourtdev@gmail.com" className="link">Email</a>
+            </div>
         </div>
     </div>
   )

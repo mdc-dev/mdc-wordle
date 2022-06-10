@@ -17,24 +17,27 @@
         font-weight: 400;
     }
 
-    .gray {
-        background-color: gray;
+    .dark-text {
+        color: gray;
     }
     
     .yellow-key {
         background-color: rgb(236, 204, 17);
+        color: white !important;
     }
     
     .green-key {
         background-color: rgb(35, 161, 35);
+        color: white !important;
     }
 
     .orange-key {
         background-color: rgb(255, 120, 30);
+        color: white !important;
     }
     
     .blue-key {
         background-color: rgb(70, 156, 255);
+        color: white !important;
     }
-
 }

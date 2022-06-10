@@ -1,32 +1,53 @@
+.help-modal-layer {
+  background-color: rgb(17, 17, 17);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+  text-align: center;
 
 .settings-modal {
-    position: fixed;
-    top: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgb(17, 17, 17);
+    max-width: 500px;
+    margin: 0 auto;
     overflow: hidden;
     color: white;
-    z-index: 1001;
 
   .closeSettingsModal {
       position: fixed;
       right: 25px;
       top: 20px;
   }
-  
-  h2 {
-      width: fit-content;
-      margin: 0;
-      margin-top: 20px;
 
-  }
+  .split {
+    content: '';
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: white;
+    max-width: 600px;
+    
+}
 
-  .dark-theme-cont, .contrast-theme-cont {
+
+  .dark-theme-cont, .contrast-theme-cont, .contact-theme-cont {
       position: relative;
       display: inline-flex;
       width: 100%;
       padding: 0 0 0 20px;
+
+      .dark, .contrast, .feedback {
+        font-size: 1em;
+      }
+
+      a {
+        position: absolute;
+        right: 40px;
+        top: 10px;
+        color: grey;
+      }
   }
 
   .switch-container {
@@ -40,8 +61,9 @@
   .switch {
       position: relative;
       display: inline-block;
-      width: 60px;
-      height: 34px;
+      width: 35px;
+      height: 24px;
+      top: -8px;
   }
   /* Hide default HTML checkbox */
   .switch input {
@@ -66,9 +88,9 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
+    height: 16px;
+    width: 16px;
+    left: 3px;
     bottom: 4px;
     background-color: white;
     -webkit-transition: .4s;
@@ -84,9 +106,9 @@
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
   }
   
   /* Rounded sliders */
@@ -99,7 +121,13 @@
   }
 }
 
+}
+
 .light {
   background-color: white;
-  color: black
+  color: black !important;
+
+  .split {
+    background-color: grey !important
+  }
 }
