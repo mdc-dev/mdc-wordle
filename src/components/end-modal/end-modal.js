@@ -32,6 +32,9 @@ const Modal = (props) => {
       key.classList = 'key'
     })
 
+    document.getElementById('enter').classList.add('button-large');
+    document.getElementById('delete').classList.add('button-large');
+
     props.setBtnDisabled(true)
     props.functionToggle()
     

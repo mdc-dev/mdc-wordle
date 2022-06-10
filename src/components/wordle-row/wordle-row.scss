@@ -16,6 +16,10 @@
         font-size: 3em;
         font-weight: 400;
     }
+
+    .gray {
+        background-color: gray;
+    }
     
     .yellow-key {
         background-color: rgb(236, 204, 17);
@@ -23,6 +27,14 @@
     
     .green-key {
         background-color: rgb(35, 161, 35);
+    }
+
+    .orange-key {
+        background-color: rgb(255, 120, 30);
+    }
+    
+    .blue-key {
+        background-color: rgb(70, 156, 255);
     }
 
 }

@@ -70,14 +70,14 @@ const Keyboard = (props) => {
             answer.forEach((letter, i) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
-                    answerLetters[i].classList.add('green');
-                    if(!key.classList.contains('green-key')) {
-                        key.classList.add('green-key')
+                    answerLetters[i].classList.add(props.hiContrast ? 'orange' : 'green');
+                    if(!key.classList.contains(props.hiContrast ? 'orange-key' : 'green-key')) {
+                        key.classList.add(props.hiContrast ? 'orange-key' : 'green-key')
                     }
                 } else if (letter !== wordArr[i] && wordArr.includes(letter)) {
-                    answerLetters[i].classList.add('yellow');
-                    if (!key.classList.contains('yellow-key')) {
-                        key.classList.add('yellow-key')
+                    answerLetters[i].classList.add(props.hiContrast ? 'blue' : 'yellow');
+                    if (!key.classList.contains(props.hiContrast ? 'blue-key' : 'yellow-key')) {
+                        key.classList.add(props.hiContrast ? 'blue-key' : 'yellow-key')
                     }
                 } else {
                     answerLetters[i].classList.add('gray');
@@ -98,7 +98,10 @@ const Keyboard = (props) => {
             window.localStorage.setItem('GAMES_WON', JSON.stringify(gamesWon + 1));
             window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(currentWinStreak + 1));
 
-            props.functionToggle()
+            setTimeout(function () {
+                props.functionToggle()
+            }, 5000);
+            // props.functionToggle()
 
             const key = Object.keys(scores)[rowIterator - 1]
             const value = scores[key];
@@ -118,14 +121,14 @@ const Keyboard = (props) => {
             answer.forEach((letter, i) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
-                    answerLetters[i].classList.add('green');
-                    if(!key.classList.contains('green-key')) {
-                        key.classList.add('green-key')
+                    answerLetters[i].classList.add(props.hiContrast ? 'orange' : 'green');
+                    if(!key.classList.contains(props.hiContrast ? 'orange-key' : 'green-key')) {
+                        key.classList.add(props.hiContrast ? 'orange-key' : 'green-key')
                     }
                 } else if (letter !== wordArr[i] && wordArr.includes(letter)) {
-                    answerLetters[i].classList.add('yellow');
-                    if (!key.classList.contains('yellow-key')) {
-                        key.classList.add('yellow-key')
+                    answerLetters[i].classList.add(props.hiContrast ? 'blue' : 'yellow');
+                    if (!key.classList.contains(props.hiContrast ? 'blue-key' : 'yellow-key')) {
+                        key.classList.add(props.hiContrast ? 'blue-key' : 'yellow-key')
                     }
                 } else {
                     answerLetters[i].classList.add('gray');

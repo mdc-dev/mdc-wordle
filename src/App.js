@@ -40,9 +40,9 @@ const App = () => {
       <div className={isDark ? "App" : "App light"}>
         <Nav functionToggle={modalFunction} isDark={isDark} functionHelpToggle={helpModalFunction} settingsModalFunction={settingModalFunction} />
         { helpModal ? <HelpModal helpModalFunction={helpModalFunction} isDark={isDark}/> : null }
-        { settingsModal ? <SettingsModal toggleHiContrast={toggleHighContrast} hiContrast={hiContrast} toggleLightDark={toggleLightDark} isDark={isDark} settingsModalFunction={settingModalFunction} /> : null}
+        { settingsModal ? <SettingsModal toggleHiContrast={toggleHiContrast} hiContrast={hiContrast} toggleLightDark={toggleLightDark} isDark={isDark} settingsModalFunction={settingModalFunction} /> : null}
         <WordleContainer />
-        <Keyboard functionToggle={modalFunction} toggleModal={toggleModal} isDark={isDark} />
+        <Keyboard functionToggle={modalFunction} toggleModal={toggleModal} isDark={isDark} hiContrast={hiContrast}/>
       </div>
     )
   }
