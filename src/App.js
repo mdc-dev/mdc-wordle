@@ -7,12 +7,15 @@ import Nav from './components/nav/nav';
 import Keyboard from './components/keyboard/keyboard';
 
 const App = () => {
+  let dark = window.localStorage.getItem('isDark') || false;
+  let hc = window.localStorage.getItem('isHc') || false;
+
 
   const [toggleModal, setToggleModal] = useState(false);
   const [helpModal, setHelpModal] = useState(false);
-  const [settingsModal, setSettingsModal] = useState(true);
-  const [isDark, setIsDark] = useState(true);
-  const [hiContrast, setHiContrast] = useState(true);
+  const [settingsModal, setSettingsModal] = useState(false);
+  const [isDark, setIsDark] = useState(dark);
+  const [hiContrast, setHiContrast] = useState(hc);
 
   const settingModalFunction = () => {
     setSettingsModal(!settingsModal)
@@ -29,11 +32,13 @@ const App = () => {
   const toggleLightDark = (e) => {
     e.target.checked = !e.target.checked;
     setIsDark(!isDark);
+    window.localStorage.setItem('isDark', JSON.stringify(isDark));
   }
 
   const toggleHiContrast = (e) => {
     e.target.checked = !e.target.checked;
     setHiContrast(!hiContrast);
+    window.localStorage.setItem('isHc', JSON.stringify(hiContrast));
   }
 
     return (

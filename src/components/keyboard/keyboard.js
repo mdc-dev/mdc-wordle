@@ -23,10 +23,12 @@ const Keyboard = (props) => {
       "HOUSE", "BORAX", "NICER", "LURCH", "EXALT", "ABOUT", "SAVVY", "TOXIN", "TUNIC", "PRIED", "INLAY", "CHUMP", "LANKY", "CRESS", "EATER", "ELUDE", "CYCLE", "KITTY", "BOULE", "MORON", "TENET", "PLACE", "LOBBY", "PLUSH", "VIGIL", "INDEX", "BLINK", "CLUNG", "QUALM", "CROUP", "CLINK", "JUICY", "STAGE", "DECAY", "NERVE", "FLIER", "SHAFT", "CROOK", "CLEAN", "CHINA", "RIDGE", "VOWEL", "GNOME", 
       "SNUCK", "ICING", "SPINY", "RIGOR", "SNAIL", "FLOWN", "RABID", "PROSE", "THANK", "POPPY", "BUDGE", "FIBER", "MOLDY", "DOWDY", "KNEEL", "TRACK", "CADDY", "QUELL", "DUMPY", "PALER", "SWORE", "REBAR", "SCUBA", "SPLAT", "FLYER", "HORNY", "MASON", "DOING", "OZONE", "AMPLY"]
 
+
     let gc = window.localStorage.getItem('GAME_COUNT') || 0;
     let gw = window.localStorage.getItem('GAMES_WON') || 0;
     let cws = window.localStorage.getItem('CURRENT_WIN_STREAK') || 0;
     let mws = window.localStorage.getItem('MAX_WIN_STREAK') || 0;
+    let row = window.localStorage.getItem('ROW_ITER') || 1;
 
     let aScore = window.localStorage.getItem('A_SCORE') || 0;
     let bScore = window.localStorage.getItem('B_SCORE') || 0;
@@ -41,7 +43,7 @@ const Keyboard = (props) => {
     const [maxWinStreak, setMaxWinStreak] = useState(parseInt(mws));
     const [gamesWon, setGamesWon] = useState(parseInt(gw))
     const [gameCount, setGameCount] = useState(parseInt(gc));
-    const [rowIterator, setRowIterator] = useState(1);
+    const [rowIterator, setRowIterator] = useState(row);
     const [letterIterator, setLetterIterator] = useState(0);
     const [scores, setScores] = useState({a: aScore, b: bScore, c: cScore, d: dScore, e: eScore, f: fScore})
 
@@ -95,6 +97,7 @@ const Keyboard = (props) => {
             setRowIterator(1);
             setBtnDisabled(false);
             window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1));
+            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1));
             window.localStorage.setItem('GAMES_WON', JSON.stringify(gamesWon + 1));
             window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(currentWinStreak + 1));
 
@@ -138,7 +141,10 @@ const Keyboard = (props) => {
                 }
             })
 
+            window.localStorage.setItem('Guess_' + JSON.stringify(rowIterator - 1), answer);
+
             setRowIterator((prev) => prev + 1);
+            window.localStorage.setItem('ROW_ITER', parseInt(rowIterator) + 1);
             setLetterIterator(0);
             // setGameCount((prev) => prev + 1);
             // window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1))
