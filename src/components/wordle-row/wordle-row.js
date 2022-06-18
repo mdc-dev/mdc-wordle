@@ -4,7 +4,7 @@ import './wordle-row.scss'
 
 const WordleRow = (props) => {
   let prevAnswer = props.guess;
-  console.log(prevAnswer)
+  console.log(props.isDark)
   return (
     <div className='row' id={props.rowId}>
         <div className={props.isDark ? 'letter-entry' : 'letter-entry dark-text'} data-count="1">{prevAnswer[0]}</div>

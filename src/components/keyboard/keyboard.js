@@ -30,12 +30,21 @@ const Keyboard = (props) => {
     let mws = window.localStorage.getItem('MAX_WIN_STREAK') || 0;
     let row = window.localStorage.getItem('ROW_ITER') || 1;
 
-    let aScore = window.localStorage.getItem('A_SCORE') || 0;
-    let bScore = window.localStorage.getItem('B_SCORE') || 0;
-    let cScore = window.localStorage.getItem('C_SCORE') || 0;
-    let dScore = window.localStorage.getItem('D_SCORE') || 0;
-    let eScore = window.localStorage.getItem('E_SCORE') || 0;
-    let fScore = window.localStorage.getItem('F_SCORE') || 0;
+    let aScore = window.localStorage.getItem('0_SCORE') || 0;
+    let bScore = window.localStorage.getItem('1_SCORE') || 0;
+    let cScore = window.localStorage.getItem('2_SCORE') || 0;
+    let dScore = window.localStorage.getItem('3_SCORE') || 0;
+    let eScore = window.localStorage.getItem('4_SCORE') || 0;
+    let fScore = window.localStorage.getItem('5_SCORE') || 0;
+
+    let scoreRecord = window.localStorage.getItem('SCORE_HISTORY') || {
+        a: aScore || 0,
+        b: bScore || 0,
+        c: cScore || 0,
+        d: dScore || 0,
+        e: eScore || 0,
+        f: fScore || 0
+    }
 
     const [gameScore, setGameScore] = useState(0);
     const [btnDisabled, setBtnDisabled] = useState(true);
@@ -45,13 +54,14 @@ const Keyboard = (props) => {
     const [gameCount, setGameCount] = useState(parseInt(gc));
     const [rowIterator, setRowIterator] = useState(row);
     const [letterIterator, setLetterIterator] = useState(0);
-    const [scores, setScores] = useState({a: aScore, b: bScore, c: cScore, d: dScore, e: eScore, f: fScore})
+    const [scores, setScores] = useState(scoreRecord);
 
 
 
     let word = words[gameCount];
     
     const keyClick = (e) => {
+        console.log(rowIterator, letterIterator, e.target.innerHTML)
         let currentRow = document.getElementById(rowIterator);
         let letterArr = currentRow.children;
         if(letterIterator < 6) {
@@ -63,6 +73,8 @@ const Keyboard = (props) => {
     const enterClick = () => {
         let answerLetters = [...document.getElementById(rowIterator).children];
         let answer = [];
+        let guessColors = [];
+        
         answerLetters.forEach(letter => {
             answer.push(letter.innerHTML);
         })
@@ -73,16 +85,19 @@ const Keyboard = (props) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
                     answerLetters[i].classList.add(props.hiContrast ? 'orange' : 'green');
+                    props.hiContrast ? guessColors.push('orange') : guessColors.push('green');
                     if(!key.classList.contains(props.hiContrast ? 'orange-key' : 'green-key')) {
                         key.classList.add(props.hiContrast ? 'orange-key' : 'green-key')
                     }
                 } else if (letter !== wordArr[i] && wordArr.includes(letter)) {
                     answerLetters[i].classList.add(props.hiContrast ? 'blue' : 'yellow');
+                    props.hiContrast ? guessColors.push('blue') : guessColors.push('yellow')
                     if (!key.classList.contains(props.hiContrast ? 'blue-key' : 'yellow-key')) {
                         key.classList.add(props.hiContrast ? 'blue-key' : 'yellow-key')
                     }
                 } else {
                     answerLetters[i].classList.add('gray');
+                    guessColors.push('gray');
                     if (!key.classList.contains('gray-key')) {
                         key.classList.add('gray-key')
                     }
@@ -97,27 +112,43 @@ const Keyboard = (props) => {
             setRowIterator(1);
             setBtnDisabled(false);
             window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1));
-            window.localStorage.setItem('GAME_COUNT', JSON.stringify(gameCount + 1));
             window.localStorage.setItem('GAMES_WON', JSON.stringify(gamesWon + 1));
             window.localStorage.setItem('CURRENT_WIN_STREAK', JSON.stringify(currentWinStreak + 1));
+            console.log(scoreRecord, rowIterator)
 
             setTimeout(function () {
                 props.functionToggle()
             }, 5000);
             // props.functionToggle()
 
-            const key = Object.keys(scores)[rowIterator - 1]
-            const value = scores[key];
-
-            setScores({...scores, [key]: value + 1});
+            const key = Object.keys(scoreRecord)[parseInt(rowIterator) - 1]
+            // const key = Object.keys(scores)[rowIterator - 1]
+            scoreRecord[key] = parseInt(scoreRecord[key]) + 1
+            // console.log(scores[key])
+            console.log(scoreRecord);
+            setScores(scoreRecord);
             console.log(scores)
 
-            
+            localStorage.setItem((parseInt(rowIterator) - 1) + '_SCORE', scoreRecord[key])
 
             if (currentWinStreak + 1 >= maxWinStreak) {
                 setMaxWinStreak(currentWinStreak + 1)
             }
 
+            window.localStorage.removeItem('COLORS_ROW_0');
+            window.localStorage.removeItem('COLORS_ROW_1');
+            window.localStorage.removeItem('COLORS_ROW_2');
+            window.localStorage.removeItem('COLORS_ROW_3');
+            window.localStorage.removeItem('COLORS_ROW_4');
+            window.localStorage.removeItem('COLORS_ROW_5');
+
+            window.localStorage.removeItem('Guess_0');
+            window.localStorage.removeItem('Guess_1');
+            window.localStorage.removeItem('Guess_2');
+            window.localStorage.removeItem('Guess_3');
+            window.localStorage.removeItem('Guess_4');
+            window.localStorage.removeItem('Guess_5');
+            window.localStorage.removeItem('Guess_6');
             window.localStorage.setItem('MAX_WIN_STREAK', JSON.stringify(maxWinStreak + 1));
 
         } else if (letterIterator === 5 && answer.join('') !== wordArr.join('') && rowIterator < 6) {
@@ -125,16 +156,19 @@ const Keyboard = (props) => {
                 let key = document.getElementById(letter);
                 if (letter === wordArr[i]) {
                     answerLetters[i].classList.add(props.hiContrast ? 'orange' : 'green');
+                    props.hiContrast ? guessColors.push('orange') : guessColors.push('green');
                     if(!key.classList.contains(props.hiContrast ? 'orange-key' : 'green-key')) {
                         key.classList.add(props.hiContrast ? 'orange-key' : 'green-key')
                     }
                 } else if (letter !== wordArr[i] && wordArr.includes(letter)) {
                     answerLetters[i].classList.add(props.hiContrast ? 'blue' : 'yellow');
+                    props.hiContrast ? guessColors.push('blue') : guessColors.push('yellow')
                     if (!key.classList.contains(props.hiContrast ? 'blue-key' : 'yellow-key')) {
                         key.classList.add(props.hiContrast ? 'blue-key' : 'yellow-key')
                     }
                 } else {
                     answerLetters[i].classList.add('gray');
+                    guessColors.push('gray');
                     if (!key.classList.contains('gray-key')) {
                         key.classList.add('gray-key')
                     }
@@ -142,7 +176,9 @@ const Keyboard = (props) => {
             })
 
             window.localStorage.setItem('Guess_' + JSON.stringify(rowIterator - 1), answer);
+            window.localStorage.setItem('COLORS_ROW_' + JSON.stringify(rowIterator - 1), JSON.stringify(guessColors))
 
+            guessColors = [];
             setRowIterator((prev) => prev + 1);
             window.localStorage.setItem('ROW_ITER', parseInt(rowIterator) + 1);
             setLetterIterator(0);

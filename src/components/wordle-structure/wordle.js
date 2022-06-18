@@ -3,7 +3,6 @@ import WordleRow from '../wordle-row/wordle-row';
 import './wordle.scss'
 
 const WordleContainer = (props) => {
-  console.log(props.isDark);
   let guessOne = localStorage.getItem('Guess_0') || ["", "", "", "", ""];
   let guessTwo = localStorage.getItem('Guess_1') || ["", "", "", "", ""];
   let guessThree = localStorage.getItem('Guess_2') || ["", "", "", "", ""];

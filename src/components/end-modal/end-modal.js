@@ -23,9 +23,11 @@ const Modal = (props) => {
   const exitModal = () => {
     const letterTiles = document.querySelectorAll('.letter-entry');
     const keys = document.querySelectorAll('.key');
+    const classLists = props.isDark ? 'letter-entry' : 'letter-entry  dark-text';
+    console.log(props.isDark, classLists)
     letterTiles.forEach(tile => {
       tile.innerHTML = '';
-      tile.classList = 'letter-entry';
+      tile.classList = classLists;
     });
 
     keys.forEach(key => {
