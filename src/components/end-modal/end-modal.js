@@ -48,7 +48,7 @@ const Modal = (props) => {
     <div className={props.isDark ? "modal-background-layer" : "modal-background-layer light-modal"} id="modal-layer">
       <div className="modal">
         <div className="content">
-            <div className="exit-modal"><i className="fa-solid fa-x" onClick={() => props.functionToggle()}></i></div>
+            <div className="exit-modal" onClick={() => props.functionToggle()}><i className="fa-solid fa-x"></i></div>
               <div className="modal-inner">
                 <h2>Statistics</h2>
                 <div className="numbers">

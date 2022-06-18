@@ -70,6 +70,15 @@ const Keyboard = (props) => {
         }
     }
 
+    const backSpace = (e) => {
+        let currentRow = document.getElementById(rowIterator);
+        let letterArr = currentRow.children;
+        console.log('backspace', currentRow, letterIterator)
+        setLetterIterator((prev) => prev - 1);
+        console.log(letterIterator)
+        letterArr[letterIterator - 1].innerHTML = ''
+    }
+
     const enterClick = () => {
         let answerLetters = [...document.getElementById(rowIterator).children];
         let answer = [];
@@ -233,7 +242,7 @@ const Keyboard = (props) => {
                 <button type='button' className="key" id="B" onClick={(e) => keyClick(e)}>B</button>
                 <button type='button' className="key" id="N" onClick={(e) => keyClick(e)}>N</button>
                 <button type='button' className="key" id="M" onClick={(e) => keyClick(e)}>M</button>
-                <button type='button' className="key button-large" id='delete'><i className="fa-solid fa-delete-left"></i></button>
+                <button type='button' className="key button-large" onClick={(e) => backSpace(e)}id='delete'><i className="fa-solid fa-delete-left"></i></button>
             </div>
         </div>
 
