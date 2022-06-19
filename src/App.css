@@ -1,6 +1,7 @@
 .App {
   min-height: 100vh;
   min-width: 100vw;
+  overflow-y: scroll;
   box-sizing: border-box;
   background-color: rgb(65, 65, 65);
 }

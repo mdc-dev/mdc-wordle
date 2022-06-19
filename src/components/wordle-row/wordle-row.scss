@@ -8,7 +8,9 @@
 
     .letter-entry {
         width: 19%;
-        height: 90%;
+        height: 100%;
+        max-height: 70px;
+        max-width: 70px;
         margin: auto;
         border: 1px solid gray;
         color: white;

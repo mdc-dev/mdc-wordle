@@ -71,12 +71,14 @@ const Keyboard = (props) => {
     }
 
     const backSpace = (e) => {
-        let currentRow = document.getElementById(rowIterator);
-        let letterArr = currentRow.children;
-        console.log('backspace', currentRow, letterIterator)
-        setLetterIterator((prev) => prev - 1);
-        console.log(letterIterator)
-        letterArr[letterIterator - 1].innerHTML = ''
+        if(letterIterator > 0) {
+            let currentRow = document.getElementById(rowIterator);
+            let letterArr = currentRow.children;
+            console.log('backspace', currentRow, letterIterator)
+            setLetterIterator((prev) => prev - 1);
+            console.log(letterIterator)
+            letterArr[letterIterator - 1].innerHTML = '' 
+        }  
     }
 
     const enterClick = () => {
