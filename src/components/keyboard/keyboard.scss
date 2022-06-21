@@ -2,7 +2,7 @@
     position: absolute;
     width: 100vw;
     height: 32vh;
-    background-color: yellow;
+    overflow-x: hidden;
 
     .keyboard-keys {
         text-align: center;
@@ -38,7 +38,7 @@
     width: 90vw;
     margin-left: auto !important;
     margin-right: auto !important;
-    height: 28vh;
+    height: fit-content;
 
     .key-row {
         height: 50px;
@@ -46,6 +46,8 @@
         .key {
             width: 25px;
             font-size: 1em;
+            padding: 1px;
+            text-align: center;
         }
 
         .button-large {
