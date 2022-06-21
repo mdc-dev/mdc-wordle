@@ -1,7 +1,6 @@
 .keyboard-container {
     position: absolute;
     width: 100vw;
-    bottom: 0;
     height: 32vh;
     background-color: yellow;
 
@@ -36,7 +35,8 @@
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .key-row {
-        height: 30px;
+        height: 50px;
+        white-space: nowrap;
     }
 }
 
