@@ -1,21 +1,22 @@
 .keyboard-container {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
     width: 100vw;
-    height: 35vh;
+    bottom: 0;
+    height: 32vh;
+    background-color: yellow;
 
     .keyboard-keys {
         text-align: center;
 
         .key-row {
             width: 100%;
-            height: 90px;
+            height: 60px;
+            margin-bottom: 7px;
 
             .key {
-            height: 80%;
+            height: 100%;
             width: 32px;
             margin: auto 2px;
-            margin-top: 7px;
             border-radius: 4px;
             border: none;
             background-color: rgb(151, 151, 151);
@@ -29,6 +30,16 @@
             }
             
         }
+
+        @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .key-row {
+        height: 30px;
+    }
+}
+
 
         
     }

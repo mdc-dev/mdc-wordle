@@ -3,8 +3,9 @@
     text-align: center;
     font-weight: bold;
     display: inline-block;
-    width: 100vw;
+    width: 100%;
     flex-direction: row;
+    overflow-x: hidden;
     border-bottom: 1px solid gray;
     position: relative;
     font-size: 1.5em;

@@ -1,7 +1,7 @@
-.App {
+.App, html {
   min-height: 100vh;
   min-width: 100vw;
-  overflow-y: scroll;
+  overflow-y: hidden;
   box-sizing: border-box;
   background-color: rgb(65, 65, 65);
 }
